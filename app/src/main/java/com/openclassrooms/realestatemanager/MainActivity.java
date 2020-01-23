@@ -6,29 +6,45 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewMain;
-    private TextView textViewQuantity;
+    private MainFragment mainFragment;
+    private DetailFragment detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.textViewMain = findViewById(R.id.activity_main_activity_text_view_main);
-        this.textViewQuantity = findViewById(R.id.activity_main_activity_text_view_quantity);
-
-        this.configureTextViewMain();
-        this.configureTextViewQuantity();
+        this.configureMainFragment();
+        this.configureDetailFragment();
     }
 
-    private void configureTextViewMain(){
-        this.textViewMain.setTextSize(15);
-        this.textViewMain.setText("Le premier bien immobilier enregistré vaut ");
+    // --------------
+    // FRAGMENTS
+    // --------------
+
+    private void configureMainFragment(){
+        // Get FragmentManager and Try to find existing instance of fragment in FrameLayout container
+        mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_main);
+
+        if (mainFragment == null) {
+            // Create new main fragment
+            mainFragment = new MainFragment();
+            // Add it to FrameLayout container
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout_main, mainFragment)
+                    .commit();
+        }
+    }
+    private void configureDetailFragment(){
+        detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
+
+        // We only add DetailFragment in Tablet mode (If found frame_layout_detail)
+        if (detailFragment == null && findViewById(R.id.frame_layout_detail) != null) {
+            detailFragment = new DetailFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout_detail, detailFragment)
+                    .commit();
+        }
     }
 
-    private void configureTextViewQuantity(){
-        int quantity = Utils.convertDollarToEuro(100);
-        this.textViewQuantity.setTextSize(20);
-        this.textViewQuantity.setText(String.valueOf(quantity));
-    }
 }

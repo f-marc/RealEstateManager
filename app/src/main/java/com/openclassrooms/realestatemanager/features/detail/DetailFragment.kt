@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.Controller.Fragments
+package com.openclassrooms.realestatemanager.features.detail
 
 
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import com.openclassrooms.realestatemanager.R
 
 
-class MainFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 }

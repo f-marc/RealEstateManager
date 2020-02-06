@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="12dp"
+    android:layout_height="match_parent"
+    tools:context=".features.add.AddActivity">
+
+    <!-- TYPE -->
+    <ImageView
+        android:id="@+id/activity_add_type_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_type_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_type_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_type_image"
+        android:textStyle="bold"
+        android:text="@string/type"/>
+
+    <TextView
+        android:id="@+id/activity_add_type_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_type_text"
+        app:layout_constraintTop_toTopOf="@id/activity_add_type_text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/star"/>
+
+    <EditText
+        android:id="@+id/activity_add_type_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_type_image"/>
+
+    <!-- PRICE -->
+    <ImageView
+        android:id="@+id/activity_add_price_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/currency_usd"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_type_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_price_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_price_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_price_image"
+        android:textStyle="bold"
+        android:text="@string/price"/>
+
+    <TextView
+        android:id="@+id/activity_add_price_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_price_text"
+        app:layout_constraintTop_toTopOf="@id/activity_add_price_text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/star"/>
+
+    <EditText
+        android:id="@+id/activity_add_price_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_price_image"/>
+
+    <!-- Address -->
+    <ImageView
+        android:id="@+id/activity_add_address_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/map_marker"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_price_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_address_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_address_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_address_image"
+        android:textStyle="bold"
+        android:text="@string/address"/>
+
+    <TextView
+        android:id="@+id/activity_add_address_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_address_text"
+        app:layout_constraintTop_toTopOf="@id/activity_add_address_text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/star"/>
+
+    <EditText
+        android:id="@+id/activity_add_address_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_address_image"/>
+
+    <!-- SURFACE -->
+    <ImageView
+        android:id="@+id/activity_add_surface_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/overscan"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_address_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_surface_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_surface_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_surface_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_surface_image"
+        android:textStyle="bold"
+        android:text="@string/surface"/>
+
+    <TextView
+        android:id="@+id/activity_add_surface_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_surface_text"
+        app:layout_constraintTop_toTopOf="@id/activity_add_surface_text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/star"/>
+
+    <EditText
+        android:id="@+id/activity_add_surface_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_surface_image"/>
+
+    <!-- NUMBER OF ROOMS -->
+    <ImageView
+        android:id="@+id/activity_add_rooms_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_surface_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_rooms_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_rooms_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_rooms_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_rooms_image"
+        android:textStyle="bold"
+        android:text="@string/number_of_rooms"/>
+
+    <EditText
+        android:id="@+id/activity_add_rooms_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_rooms_image"/>
+
+    <!-- POINTS OF INTEREST -->
+    <ImageView
+        android:id="@+id/activity_add_interest_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/map_marker"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_rooms_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_interest_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_interest_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_interest_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_interest_image"
+        android:textStyle="bold"
+        android:text="@string/points_of_interest"/>
+
+    <EditText
+        android:id="@+id/activity_add_interest_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_interest_image"/>
+
+    <!-- REAL ESTATE AGENT -->
+    <ImageView
+        android:id="@+id/activity_add_agent_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/account"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_interest_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_agent_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_agent_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_agent_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_agent_image"
+        android:textStyle="bold"
+        android:text="@string/real_estate_agent"/>
+
+    <TextView
+        android:id="@+id/activity_add_agent_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_agent_text"
+        app:layout_constraintTop_toTopOf="@id/activity_add_agent_text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/star"/>
+
+    <EditText
+        android:id="@+id/activity_add_agent_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_agent_image"/>
+
+    <!-- DESCRIPTION -->
+    <ImageView
+        android:id="@+id/activity_add_description_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pencil"
+        app:layout_constraintTop_toBottomOf="@id/activity_add_agent_edit"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_add_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toEndOf="@id/activity_add_description_image"
+        app:layout_constraintTop_toTopOf="@id/activity_add_description_image"
+        app:layout_constraintBottom_toBottomOf="@id/activity_add_description_image"
+        android:textStyle="bold"
+        android:text="@string/description"/>
+
+    <EditText
+        android:id="@+id/activity_add_description_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_add_description_image"/>
+
+    <!-- BUTTON -->
+    <Button
+        android:id="@+id/activity_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="17sp"
+        android:text="@string/add"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,10 +1,9 @@
-package com.openclassrooms.realestatemanager.Controller.Activities;
+package com.openclassrooms.realestatemanager.features.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.openclassrooms.realestatemanager.Controller.Fragments.DetailFragment;
-import com.openclassrooms.realestatemanager.Controller.Fragments.MainFragment;
+import com.openclassrooms.realestatemanager.features.detail.DetailFragment;
 import com.openclassrooms.realestatemanager.R;
 
 public class MainActivity extends AppCompatActivity {

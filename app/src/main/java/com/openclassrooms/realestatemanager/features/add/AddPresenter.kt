@@ -1,6 +1,6 @@
 package com.openclassrooms.realestatemanager.features.add
 
-class AddPresenter {
+class AddPresenter:AddContract.Presenter {
 
     // TODO
 

@@ -47,9 +47,10 @@ public abstract class RealEstateDatabase extends RoomDatabase {
                 super.onCreate(db);
 
                 ContentValues contentValues = new ContentValues();
+                contentValues.put("image", "https://www.google.fr");
                 contentValues.put("type", "House");
-                contentValues.put("location", "Paris");
                 contentValues.put("price", 1000000);
+                contentValues.put("address", "Paris");
 
                 db.insert("Estate", OnConflictStrategy.IGNORE, contentValues);
             }

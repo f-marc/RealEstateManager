@@ -15,9 +15,12 @@ public interface EstateDao {
     @Query("SELECT * FROM Estate WHERE id = :estateId")
     LiveData<Estate> getEstate(long estateId);
 
+    @Query("SELECT * FROM Estate")
+    LiveData<Estate> getEstates();
+
     @Insert
     void createEstate(Estate estate);
 
     @Update
-    int updateEstate(Estate estate);
+    void updateEstate(Estate estate);
 }

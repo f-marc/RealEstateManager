@@ -24,7 +24,18 @@ public class Estate {
 
     public Estate() { }
 
-    public Estate(String image, String type, int price, String address, String surface, String agent, String entryDate) {
+    /*public Estate(String image, String type, int price, String address, String surface, String agent, String entryDate) {
+        this.image = image;
+        this.type = type;
+        this.price = price;
+        this.address = address;
+        this.surface = surface;
+        this.agent = agent;
+        this.entryDate = entryDate;
+        this.isSold = false;
+    }*/
+
+    public Estate(String image, String type, int price, String address) {
         this.image = image;
         this.type = type;
         this.price = price;

@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.model;
+package com.openclassrooms.realestatemanager.data.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

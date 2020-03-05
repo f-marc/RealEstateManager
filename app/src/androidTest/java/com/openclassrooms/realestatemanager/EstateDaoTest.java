@@ -6,8 +6,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.openclassrooms.realestatemanager.model.Estate;
-import com.openclassrooms.realestatemanager.model.database.RealEstateDatabase;
+import com.openclassrooms.realestatemanager.data.model.Estate;
+import com.openclassrooms.realestatemanager.data.database.RealEstateDatabase;
 
 import org.junit.After;
 import org.junit.Before;

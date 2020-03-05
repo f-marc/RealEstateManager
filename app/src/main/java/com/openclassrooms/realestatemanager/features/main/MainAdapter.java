@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.RequestManager;
 import com.openclassrooms.realestatemanager.R;
-import com.openclassrooms.realestatemanager.model.Estate;
+import com.openclassrooms.realestatemanager.data.model.Estate;
 
 import java.util.List;
 
@@ -55,6 +55,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
             return 0;
         }
         return estateList.size();
+    }
+
+    public void updateData(List<Estate> estateList){
+        this.estateList = estateList;
+        this.notifyDataSetChanged();
     }
 }
 

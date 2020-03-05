@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.model.database.dao;
+package com.openclassrooms.realestatemanager.data.database;
 
 
 import android.arch.lifecycle.LiveData;
@@ -7,7 +7,9 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.openclassrooms.realestatemanager.model.Estate;
+import com.openclassrooms.realestatemanager.data.model.Estate;
+
+import java.util.List;
 
 @Dao
 public interface EstateDao {
@@ -16,7 +18,7 @@ public interface EstateDao {
     LiveData<Estate> getEstate(long estateId);
 
     @Query("SELECT * FROM Estate")
-    LiveData<Estate> getEstates();
+    LiveData<List<Estate>> getEstates();
 
     @Insert
     void createEstate(Estate estate);

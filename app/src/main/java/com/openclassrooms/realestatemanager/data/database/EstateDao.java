@@ -1,11 +1,11 @@
 package com.openclassrooms.realestatemanager.data.database;
 
-
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.openclassrooms.realestatemanager.data.model.Estate;
 
@@ -14,15 +14,18 @@ import java.util.List;
 @Dao
 public interface EstateDao {
 
-    @Query("SELECT * FROM Estate WHERE id = :estateId")
-    LiveData<Estate> getEstate(long estateId);
-
-    @Query("SELECT * FROM Estate")
-    LiveData<List<Estate>> getEstates();
-
     @Insert
-    void createEstate(Estate estate);
+    void insert(Estate estate);
 
     @Update
-    void updateEstate(Estate estate);
+    void update(Estate estate);
+
+    @Delete
+    void delete(Estate estate);
+
+    @Query("DELETE FROM estate_table")
+    void deleteAllEstates();
+
+    @Query("SELECT * FROM estate_table ORDER BY price DESC")
+    LiveData<List<Estate>> getAllEstates();
 }

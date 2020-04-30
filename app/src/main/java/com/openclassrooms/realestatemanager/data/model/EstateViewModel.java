@@ -1,58 +1,42 @@
 package com.openclassrooms.realestatemanager.data.model;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
+import android.app.Application;
 
-import com.openclassrooms.realestatemanager.repositories.EstateDataRepository;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import com.openclassrooms.realestatemanager.repositories.EstateRepository;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 
+public class EstateViewModel extends AndroidViewModel {
+    private EstateRepository repository;
+    private LiveData<List<Estate>> allEstates;
 
-public class EstateViewModel extends ViewModel {
-
-    // REPOSITORIES
-    private final EstateDataRepository estateDataSource;
-    private final Executor executor;
-
-    // DATA
-    @Nullable
-    private LiveData<Estate> currentEstate;
-    private LiveData<List<Estate>> currentEstates;
-
-    public EstateViewModel(EstateDataRepository estateDataSource, Executor executor) {
-        this.estateDataSource = estateDataSource;
-        this.executor = executor;
+    public EstateViewModel(@NonNull Application application) {
+        super(application);
+        repository = new EstateRepository(application);
+        allEstates = repository.getAllEstates();
     }
 
-    public void initEstate(long estateId) {
-        if (this.currentEstate != null) {
-            return;
-        }
-        currentEstate = estateDataSource.getEstate(estateId);
+    public void insert(Estate estate) {
+        repository.insert(estate);
     }
 
-    public void initEstates() {
-        if (this.currentEstates != null) {
-            return;
-        }
-        currentEstates = estateDataSource.getEstates();
+    public void update(Estate estate) {
+        repository.update(estate);
     }
 
-    public LiveData<Estate> getEstate() {
-        return this.currentEstate;
+    public void delete(Estate estate) {
+        repository.delete(estate);
     }
 
-    public LiveData<List<Estate>> getEstates() {
-        return this.currentEstates;
+    public void deleteAllEstates() {
+        repository.deleteAllEstates();
     }
 
-    public void createEstate(final Estate estate) {
-        executor.execute(() -> estateDataSource.createEstate(estate));
-    }
-
-    public void updateEstate(final Estate estate) {
-        executor.execute(() -> estateDataSource.updateEstate(estate));
+    public LiveData<List<Estate>> getAllEstates() {
+        return allEstates;
     }
 }

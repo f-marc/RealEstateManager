@@ -1,14 +1,17 @@
 package com.openclassrooms.realestatemanager.data.model;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.util.List;
 
 
-@Entity
+@Entity(tableName = "estate_table")
 public class Estate {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
+
     private String image;
     private String type;
     private int price;
@@ -22,20 +25,7 @@ public class Estate {
     private String soldDate;
     private Boolean isSold;
 
-    public Estate() { }
-
-    /*public Estate(String image, String type, int price, String address, String surface, String agent, String entryDate) {
-        this.image = image;
-        this.type = type;
-        this.price = price;
-        this.address = address;
-        this.surface = surface;
-        this.agent = agent;
-        this.entryDate = entryDate;
-        this.isSold = false;
-    }*/
-
-    public Estate(String image, String type, int price, String address) {
+    public Estate(String image, String type, int price, String address, String surface, String agent, String entryDate) {
         this.image = image;
         this.type = type;
         this.price = price;

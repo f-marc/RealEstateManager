@@ -1,6 +1,6 @@
 package com.openclassrooms.realestatemanager.features.add
 
-interface AddView:AddContract.View {
+interface AddEstateView:AddEstateContract.View {
 
     // TODO
 

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -14,7 +14,7 @@
             android:id="@+id/fragment_main_item_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@android:color/holo_red_dark"
+            android:background="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -54,6 +54,6 @@
             android:textStyle="bold"
             android:text="1'000'000$"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

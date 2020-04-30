@@ -1,18 +1,9 @@
 package com.openclassrooms.realestatemanager;
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule;
-import android.arch.persistence.room.Room;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.room.Room;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.openclassrooms.realestatemanager.data.model.Estate;
-import com.openclassrooms.realestatemanager.data.database.RealEstateDatabase;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
@@ -21,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class EstateDaoTest {
 
+    /*
     // FOR DATA
     private RealEstateDatabase database;
 
@@ -57,4 +49,5 @@ public class EstateDaoTest {
     public void closeDb() throws Exception {
         database.close();
     }
+     */
 }

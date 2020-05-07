@@ -13,14 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
+import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
+import static com.openclassrooms.realestatemanager.features.main.MainActivity.ADD_ESTATE_REQUEST;
 
 
 public class MainFragment extends Fragment {
@@ -29,7 +34,7 @@ public class MainFragment extends Fragment {
         return new MainFragment();
     }
 
-    public static final int ADD_ESTATE_REQUEST = 1;
+    private EstateViewModel estateViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,10 +50,10 @@ public class MainFragment extends Fragment {
             startActivityForResult(intent, ADD_ESTATE_REQUEST);
         });
 
-        final EstateAdapter adapter = new EstateAdapter();
+        final MainAdapter adapter = new MainAdapter();
         recyclerView.setAdapter(adapter);
 
-        EstateViewModel estateViewModel = new ViewModelProvider(this,
+        estateViewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(this.getActivity().getApplication()))
                 .get(EstateViewModel.class);
         estateViewModel.getAllEstates().observe(this, new Observer<List<Estate>>() {
@@ -59,6 +64,31 @@ public class MainFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_ESTATE_REQUEST && resultCode == RESULT_OK) {
+            String image = "";
+            String type = data.getStringExtra(AddEstateActivity.EXTRA_TYPE);
+            int price = data.getIntExtra(AddEstateActivity.EXTRA_PRICE, 0);
+            String address = data.getStringExtra(AddEstateActivity.EXTRA_ADDRESS);
+            String surface = data.getStringExtra(AddEstateActivity.EXTRA_SURFACE);
+            int rooms = data.getIntExtra(AddEstateActivity.EXTRA_ROOMS, 0); // A AJOUTER
+            String interest = data.getStringExtra(AddEstateActivity.EXTRA_INTEREST); // A AJOUTER
+            String agent = data.getStringExtra(AddEstateActivity.EXTRA_AGENT);
+            String description = data.getStringExtra(AddEstateActivity.EXTRA_DESCRIPTION); // A AJOUTER
+            String date = Utils.getTodayDate();
+
+            Estate estate = new Estate(image, type, price, address, surface, agent, date);
+            estateViewModel.insert(estate);
+
+            Toast.makeText(getContext(), "Note saved", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Note not saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

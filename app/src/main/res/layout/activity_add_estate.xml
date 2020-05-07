@@ -86,6 +86,7 @@
             android:id="@+id/activity_add_price_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_add_price_image" />
@@ -188,9 +189,9 @@
             app:layout_constraintStart_toEndOf="@id/activity_add_rooms_image"
             app:layout_constraintTop_toTopOf="@id/activity_add_rooms_image" />
 
-        <EditText
-            android:id="@+id/activity_add_rooms_edit"
-            android:layout_width="match_parent"
+        <NumberPicker
+            android:id="@+id/activity_add_rooms_number_picker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +204,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/map_marker"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_add_rooms_edit" />
+            app:layout_constraintTop_toBottomOf="@id/activity_add_rooms_number_picker" />
 
         <TextView
             android:id="@+id/activity_add_interest_text"

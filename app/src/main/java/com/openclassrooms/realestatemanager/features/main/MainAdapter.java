@@ -14,7 +14,7 @@ import com.openclassrooms.realestatemanager.data.model.Estate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstateAdapter extends RecyclerView.Adapter<EstateAdapter.EstateHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EstateHolder> {
     private List<Estate> estates = new ArrayList<>();
 
     @NonNull
@@ -51,7 +51,7 @@ public class EstateAdapter extends RecyclerView.Adapter<EstateAdapter.EstateHold
         public EstateHolder(View itemView) {
             super(itemView);
             textViewType = itemView.findViewById(R.id.fragment_main_item_type);
-            textViewAddress = itemView.findViewById(R.id.fragment_main_item_location);
+            textViewAddress = itemView.findViewById(R.id.fragment_main_item_address);
             textViewPrice = itemView.findViewById(R.id.fragment_main_item_price);
         }
     }

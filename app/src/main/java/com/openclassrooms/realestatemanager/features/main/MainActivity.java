@@ -5,22 +5,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
 import com.openclassrooms.realestatemanager.features.detail.DetailFragment;
 import com.openclassrooms.realestatemanager.R;
+import com.openclassrooms.realestatemanager.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EstateViewModel estateViewModel;
+    public static final int ADD_ESTATE_REQUEST = 1;
 
     private MainFragment mainFragment;
     private DetailFragment detailFragment;
+    private EstateViewModel estateViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        /*if (requestCode == ADD_ESTATE_REQUEST && resultCode == RESULT_OK) {
-            String title = data.getStringExtra(AddNoteActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(AddNoteActivity.EXTRA_DESCRIPTION);
-            int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
-
-            Estate estate = new Estate(title, description, priority);
-            estateViewModel.insert(estate);
-
-            Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
-        }*/
     }
 
 }

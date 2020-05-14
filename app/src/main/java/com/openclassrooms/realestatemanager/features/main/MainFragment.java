@@ -8,8 +8,11 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
+import com.openclassrooms.realestatemanager.utils.ItemClickSupport;
 import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
@@ -35,24 +39,44 @@ public class MainFragment extends Fragment {
     }
 
     private EstateViewModel estateViewModel;
+    private RecyclerView recyclerView;
+    private MainAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.fragment_main_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-
+        recyclerView = view.findViewById(R.id.fragment_main_recycler_view);
         FloatingActionButton buttonAddEstate = view.findViewById(R.id.button_add_estate);
+
+        // CLICK ON FAB
         buttonAddEstate.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AddEstateActivity.class);
             startActivityForResult(intent, ADD_ESTATE_REQUEST);
         });
 
-        final MainAdapter adapter = new MainAdapter();
-        recyclerView.setAdapter(adapter);
+        // SWIPE TO DELETE
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                estateViewModel.delete(adapter.getEstateAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Note deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
 
+        configureViewModel();
+        configureRecyclerView();
+        configureOnClickRecyclerView();
+
+        return view;
+    }
+
+    private void configureViewModel() {
         estateViewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(this.getActivity().getApplication()))
                 .get(EstateViewModel.class);
@@ -62,8 +86,27 @@ public class MainFragment extends Fragment {
                 adapter.setEstates(estates);
             }
         });
+    }
 
-        return view;
+    private void configureRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        adapter = new MainAdapter();
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void configureOnClickRecyclerView() {
+        ItemClickSupport.addTo(recyclerView, R.layout.estate_item)
+                .setOnItemClickListener((recyclerView, position, v) -> {
+                    Estate estate = adapter.getEstateAt(position);
+                    long id = estate.getId();
+                    Intent intent = new Intent(getContext(), AddEstateActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("id", id);
+                    intent.putExtras(bundle);
+                    Log.i("testid", "" + id);
+                    startActivity(intent);
+                });
     }
 
     @Override

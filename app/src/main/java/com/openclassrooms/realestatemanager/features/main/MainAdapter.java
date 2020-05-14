@@ -43,6 +43,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EstateHolder> 
         notifyDataSetChanged();
     }
 
+    public Estate getEstateAt(int position) {
+        return estates.get(position);
+    }
+
     class EstateHolder extends RecyclerView.ViewHolder {
         private TextView textViewType;
         private TextView textViewAddress;

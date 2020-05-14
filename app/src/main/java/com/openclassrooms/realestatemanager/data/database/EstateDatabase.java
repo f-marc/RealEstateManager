@@ -11,10 +11,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.openclassrooms.realestatemanager.data.model.Estate;
 
-import java.sql.Array;
-import java.util.Arrays;
-import java.util.List;
-
 
 @Database(entities = {Estate.class}, version = 1)
 public abstract class EstateDatabase extends RoomDatabase {

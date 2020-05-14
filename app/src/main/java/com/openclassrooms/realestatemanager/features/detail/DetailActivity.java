@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
 
         if (detailFragment == null) {
-            // Create new main fragment
+            // Create new detail fragment
             detailFragment = new DetailFragment();
             // Add it to FrameLayout container
             getSupportFragmentManager().beginTransaction()

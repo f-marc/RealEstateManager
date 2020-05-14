@@ -3,16 +3,18 @@ package com.openclassrooms.realestatemanager.data.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
+import static com.openclassrooms.realestatemanager.data.model.Estate.ESTATE_TABLE_NAME;
 
 
-@Entity(tableName = "estate_table")
+@Entity(tableName = ESTATE_TABLE_NAME)
 public class Estate {
+
+    public static final String ESTATE_TABLE_NAME = "estate_table";
 
     @PrimaryKey(autoGenerate = true)
     private long id;
 
-    private String image;
+    private String thumbnail;
     private String type;
     private int price;
     private String address;
@@ -25,8 +27,8 @@ public class Estate {
     private String soldDate;
     private Boolean isSold;
 
-    public Estate(String image, String type, int price, String address, String surface, String agent, String entryDate) {
-        this.image = image;
+    public Estate(String thumbnail, String type, int price, String address, String surface, String agent, String entryDate) {
+        this.thumbnail = thumbnail;
         this.type = type;
         this.price = price;
         this.address = address;
@@ -38,7 +40,7 @@ public class Estate {
 
     // --- GETTER ---
     public long getId() { return id; }
-    public String getImage() { return image; }
+    public String getThumbnail() { return thumbnail; }
     public String getType() { return type; }
     public int getPrice() { return price; }
     public String getAddress() { return address; }
@@ -53,7 +55,7 @@ public class Estate {
 
     // --- SETTER ---
     public void setId(long id) { this.id = id; }
-    public void setImage(String image) { this.image = image; }
+    public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
     public void setType(String type) { this.type = type; }
     public void setPrice(int price) { this.price = price; }
     public void setAddress(String address) { this.address = address; }
@@ -66,3 +68,5 @@ public class Estate {
     public void setSoldDate(String soldDate) { this.soldDate = soldDate; }
     public void setSold(Boolean sold) { isSold = sold; }
 }
+
+

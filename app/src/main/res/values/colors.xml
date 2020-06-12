@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="backgroundLayout">#EBEAEA</color>
-    <color name="backgroundCard">#FFFFFF</color>
+    <color name="backgroundLayout">#FFFFFF</color>
+    <color name="backgroundDivider">#EBEAEA</color>
 
     <color name="colorDark">#202125</color>
 

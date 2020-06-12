@@ -13,12 +13,12 @@ import java.util.List;
 @Dao
 public interface ImageDao {
 
-    @Insert
+    /*@Insert
     void insert(Image image);
 
     @Query("SELECT * FROM image_table WHERE estateId = :estateId")
     LiveData<List<Image>> getImages(long estateId);
 
     @Query("DELETE FROM image_table WHERE imageId = :imageId")
-    int deleteImage(long imageId);
+    int deleteImage(long imageId);*/
 }

@@ -54,9 +54,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EstateHolder> 
 
         public EstateHolder(View itemView) {
             super(itemView);
-            textViewType = itemView.findViewById(R.id.fragment_main_item_type);
-            textViewAddress = itemView.findViewById(R.id.fragment_main_item_address);
-            textViewPrice = itemView.findViewById(R.id.fragment_main_item_price);
+            textViewType = itemView.findViewById(R.id.estate_item_type);
+            textViewAddress = itemView.findViewById(R.id.estate_item_address);
+            textViewPrice = itemView.findViewById(R.id.estate_item_price);
         }
     }
 }

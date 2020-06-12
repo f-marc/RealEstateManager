@@ -12,8 +12,8 @@
 
             <ImageView
                 android:id="@+id/estate_item_image"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:background="@color/colorAccent"
                 android:src="@drawable/home"
                 app:layout_constraintStart_toStartOf="parent"

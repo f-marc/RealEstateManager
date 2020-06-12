@@ -63,7 +63,7 @@ public class MainFragment extends Fragment {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             Drawable icon = view.getContext().getResources().getDrawable(R.drawable.ic_delete);
-            ColorDrawable background = new ColorDrawable(Color.RED);
+            ColorDrawable background = new ColorDrawable(getResources().getColor(R.color.delete));
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -154,10 +154,10 @@ public class MainFragment extends Fragment {
         if (requestCode == ADD_ESTATE_REQUEST && resultCode == RESULT_OK) {
             String image = "";
             String type = data.getStringExtra(AddEstateActivity.EXTRA_TYPE);
-            int price = data.getIntExtra(AddEstateActivity.EXTRA_PRICE, 0);
+            String price = data.getStringExtra(AddEstateActivity.EXTRA_PRICE);
             String address = data.getStringExtra(AddEstateActivity.EXTRA_ADDRESS);
             String surface = data.getStringExtra(AddEstateActivity.EXTRA_SURFACE);
-            int rooms = data.getIntExtra(AddEstateActivity.EXTRA_ROOMS, 0); // A AJOUTER
+            String rooms = data.getStringExtra(AddEstateActivity.EXTRA_ROOMS); // A AJOUTER
             String interest = data.getStringExtra(AddEstateActivity.EXTRA_INTEREST); // A AJOUTER
             String agent = data.getStringExtra(AddEstateActivity.EXTRA_AGENT);
             String description = data.getStringExtra(AddEstateActivity.EXTRA_DESCRIPTION); // A AJOUTER

@@ -28,10 +28,10 @@ public class AddEstateActivity extends AppCompatActivity {
     private EditText editTextPrice;
     private EditText editTextAddress;
     private EditText editTextSurface;
+    private EditText editTextRooms;
     private EditText editTextInterest;
     private EditText editTextAgent;
     private EditText editTextDescription;
-    private NumberPicker numberPickerRooms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +42,10 @@ public class AddEstateActivity extends AppCompatActivity {
         editTextPrice = findViewById(R.id.activity_add_price_edit);
         editTextAddress = findViewById(R.id.activity_add_address_edit);
         editTextSurface = findViewById(R.id.activity_add_surface_edit);
+        editTextRooms = findViewById(R.id.activity_add_rooms_number_edit);
         editTextInterest = findViewById(R.id.activity_add_interest_edit);
         editTextAgent = findViewById(R.id.activity_add_agent_edit);
         editTextDescription = findViewById(R.id.activity_add_description_edit);
-        numberPickerRooms = findViewById(R.id.activity_add_rooms_number_picker);
-
-        numberPickerRooms.setMinValue(1);
-        numberPickerRooms.setMaxValue(99);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setTitle("Add Estate");
@@ -62,11 +59,11 @@ public class AddEstateActivity extends AppCompatActivity {
         String interest = editTextInterest.getText().toString();
         String agent = editTextAgent.getText().toString();
         String description = editTextDescription.getText().toString();
-        int rooms = numberPickerRooms.getValue();
+        String rooms = editTextRooms.getText().toString();
 
         if (type.trim().isEmpty() || price.trim().isEmpty() || address.trim().isEmpty()
                 || surface.trim().isEmpty() || agent.trim().isEmpty()) {
-            Toast.makeText(this, "Please complete all fields with a red asterisk", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.complete_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/star"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/activity_add_type_text"
             app:layout_constraintTop_toTopOf="@id/activity_add_type_text" />
@@ -50,7 +50,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_type_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_type_image"
+            android:hint="@string/type_hint"/>
 
         <!-- PRICE -->
         <ImageView
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/star"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/activity_add_price_text"
             app:layout_constraintTop_toTopOf="@id/activity_add_price_text" />
@@ -91,7 +92,8 @@
             android:inputType="number"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_price_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_price_image"
+            android:hint="@string/price_hint"/>
 
         <!-- Address -->
         <ImageView
@@ -120,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/star"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/activity_add_address_text"
             app:layout_constraintTop_toTopOf="@id/activity_add_address_text" />
@@ -131,7 +133,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_address_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_address_image"
+            android:hint="@string/address_hint"/>
 
         <!-- SURFACE -->
         <ImageView
@@ -160,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/star"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/activity_add_surface_text"
             app:layout_constraintTop_toTopOf="@id/activity_add_surface_text" />
@@ -171,7 +174,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_surface_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_surface_image"
+            android:hint="@string/surface_hint"/>
 
         <!-- NUMBER OF ROOMS -->
         <ImageView
@@ -194,13 +198,14 @@
             app:layout_constraintStart_toEndOf="@id/activity_add_rooms_image"
             app:layout_constraintTop_toTopOf="@id/activity_add_rooms_image" />
 
-        <NumberPicker
-            android:id="@+id/activity_add_rooms_number_picker"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/activity_add_rooms_number_edit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_rooms_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_rooms_image"
+            android:hint="@string/rooms_hint"/>
 
         <!-- POINTS OF INTEREST -->
         <ImageView
@@ -209,7 +214,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/map_marker"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_add_rooms_number_picker" />
+            app:layout_constraintTop_toBottomOf="@id/activity_add_rooms_number_edit" />
 
         <TextView
             android:id="@+id/activity_add_interest_text"
@@ -229,7 +234,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_interest_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_interest_image"
+            android:hint="@string/interest_hint"/>
 
         <!-- REAL ESTATE AGENT -->
         <ImageView
@@ -258,7 +264,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="@string/star"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/activity_add_agent_text"
             app:layout_constraintTop_toTopOf="@id/activity_add_agent_text" />
@@ -269,7 +275,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_agent_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_agent_image"
+            android:hint="Stéphane Plaza"/>
 
         <!-- DESCRIPTION -->
         <ImageView
@@ -298,7 +305,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_add_description_image" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_add_description_image"
+            android:hint="@string/description_hint"/>
 
         <!-- BUTTON -->
         <Button

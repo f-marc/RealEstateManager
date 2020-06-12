@@ -14,4 +14,17 @@
     <string name="real_estate_agent">Real estate agent</string>
     <string name="description">Description</string>
     <string name="star">*</string>
+    <string name="complete_fields">"Please complete all fields with an asterisk"</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod tristique mauris,
+        at tincidunt tellus ultricies a. Etiam at erat eget justo fringilla consectetur vel pulvinar quam. Maecenas facilisis,
+        urna vitae porttitor interdum, metus turpis luctus orci, at mollis orci dolor a tellus. Integer ut justo quis dui mollis
+        feugiat. Integer at interdum elit. Suspendisse a turpis leo.
+    </string>
+    <string name="type_hint">House, Duplex, …</string>
+    <string name="price_hint">$500,000</string>
+    <string name="address_hint">740 Park Avenue …</string>
+    <string name="surface_hint">250 m²</string>
+    <string name="rooms_hint">8</string>
+    <string name="interest_hint">School, Supermarket, …</string>
+    <string name="description_hint">Garden with swimming pool …</string>
 </resources>

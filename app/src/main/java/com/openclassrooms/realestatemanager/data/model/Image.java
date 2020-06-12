@@ -1,5 +1,6 @@
 package com.openclassrooms.realestatemanager.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -18,6 +19,8 @@ public class Image {
     public static final String IMAGE_TABLE_NAME = "image_table";
 
     private long estateId;
+    @NonNull
+    @PrimaryKey
     private String imageId;
 
     public Image(long estateId, String imageId) {

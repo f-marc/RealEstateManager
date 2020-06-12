@@ -15,26 +15,30 @@ import com.openclassrooms.realestatemanager.data.model.Estate;
 @Database(entities = {Estate.class}, version = 1)
 public abstract class EstateDatabase extends RoomDatabase {
 
-    private static EstateDatabase instance;
+    // --- SINGLETON ---
+    private static EstateDatabase INSTANCE;
 
+    // --- DAO ---
     public abstract EstateDao estateDao();
+    public abstract ImageDao imageDao();
 
+    // --- INSTANCE ---
     public static synchronized EstateDatabase getInstance(Context context) {
-        if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(),
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     EstateDatabase.class, "estate_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
         }
-        return instance;
+        return INSTANCE;
     }
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTask(instance).execute();
+            new PopulateDbAsyncTask(INSTANCE).execute();
         }
     };
 

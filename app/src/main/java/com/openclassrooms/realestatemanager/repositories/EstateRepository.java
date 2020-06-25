@@ -14,6 +14,7 @@ import java.util.List;
 public class EstateRepository {
 
     private EstateDao estateDao;
+    private LiveData<Estate> estate;
     private LiveData<List<Estate>> allEstates;
 
     public EstateRepository(Application application) {
@@ -37,6 +38,8 @@ public class EstateRepository {
     public void deleteAllEstates() {
         new DeleteAllEstatesAsyncTask(estateDao).execute();
     }
+
+    public LiveData<Estate> getEstate(long id) { return this.estateDao.getEstate(id); }
 
     public LiveData<List<Estate>> getAllEstates() {
         return allEstates;

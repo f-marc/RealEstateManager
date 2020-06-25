@@ -26,6 +26,9 @@ public interface EstateDao {
     @Query("DELETE FROM estate_table")
     void deleteAllEstates();
 
+    @Query("SELECT * FROM estate_table WHERE id =:id")
+    LiveData<Estate> getEstate(long id);
+
     @Query("SELECT * FROM estate_table ORDER BY price DESC")
     LiveData<List<Estate>> getAllEstates();
 }

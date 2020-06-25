@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -46,6 +47,24 @@ public class MainFragment extends Fragment {
     private RecyclerView recyclerView;
     private MainAdapter adapter;
 
+    public interface CallbackClick {
+        public void onItemClicked(long id);
+    }
+
+    private CallbackClick callback;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callback = (CallbackClick) context;
+    }
+
+    @Override
+    public void onDetach() {
+        callback = null;
+        super.onDetach();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
@@ -78,7 +97,7 @@ public class MainFragment extends Fragment {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
                 View itemView = viewHolder.itemView;
-                int backgroundCornerOffset = 7;
+                int backgroundCornerOffset = 0;
 
                 int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
                 int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
@@ -107,11 +126,18 @@ public class MainFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        configureViewModel();
         configureRecyclerView();
+        configureViewModel();
         configureOnClickRecyclerView();
 
         return view;
+    }
+
+    private void configureRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        adapter = new MainAdapter();
+        recyclerView.setAdapter(adapter);
     }
 
     private void configureViewModel() {
@@ -126,24 +152,14 @@ public class MainFragment extends Fragment {
         });
     }
 
-    private void configureRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        adapter = new MainAdapter();
-        recyclerView.setAdapter(adapter);
-    }
-
     private void configureOnClickRecyclerView() {
         ItemClickSupport.addTo(recyclerView, R.layout.estate_item)
                 .setOnItemClickListener((recyclerView, position, v) -> {
                     Estate estate = adapter.getEstateAt(position);
                     long id = estate.getId();
-                    Intent intent = new Intent(getContext(), AddEstateActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putLong("id", id);
-                    intent.putExtras(bundle);
-                    Log.i("testid", "" + id);
-                    startActivity(intent);
+                    if (callback != null) {
+                        callback.onItemClicked(id);
+                    }
                 });
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class EstateViewModel extends AndroidViewModel {
     private EstateRepository repository;
+    private LiveData<Estate> estate;
     private LiveData<List<Estate>> allEstates;
 
     public EstateViewModel(@NonNull Application application) {
@@ -35,6 +36,8 @@ public class EstateViewModel extends AndroidViewModel {
     public void deleteAllEstates() {
         repository.deleteAllEstates();
     }
+
+    public LiveData<Estate> getEstate(long id) { return repository.getEstate(id); }
 
     public LiveData<List<Estate>> getAllEstates() {
         return allEstates;

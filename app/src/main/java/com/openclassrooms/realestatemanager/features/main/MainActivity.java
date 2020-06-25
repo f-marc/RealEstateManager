@@ -5,16 +5,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
-import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
 import com.openclassrooms.realestatemanager.features.detail.DetailFragment;
 import com.openclassrooms.realestatemanager.R;
-import com.openclassrooms.realestatemanager.utils.Utils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainFragment.CallbackClick {
 
     public static final int ADD_ESTATE_REQUEST = 1;
 
@@ -69,4 +67,26 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    // --------------
+    // CALLBACK
+    // --------------
+    @Override
+    public void onItemClicked(long id) {
+        Log.i("testclick", "" + id);
+        detailFragment = new DetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", id);
+        detailFragment.setArguments(bundle);
+
+        if (findViewById(R.id.frame_layout_detail) != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_layout_detail, detailFragment)
+                    .commit();
+        }
+        else {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_layout_main, detailFragment)
+                    .commit();
+        }
+    }
 }

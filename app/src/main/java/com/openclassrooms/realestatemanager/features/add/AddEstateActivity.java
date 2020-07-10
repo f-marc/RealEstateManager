@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.openclassrooms.realestatemanager.R;
@@ -47,6 +46,9 @@ public class AddEstateActivity extends AppCompatActivity {
         editTextAgent = findViewById(R.id.activity_add_agent_edit);
         editTextDescription = findViewById(R.id.activity_add_description_edit);
 
+        Button button = findViewById(R.id.activity_add_button);
+        button.setOnClickListener(v -> saveEstate());
+
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setTitle("Add Estate");
     }
@@ -81,22 +83,5 @@ public class AddEstateActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_estate_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.save_estate:
-                saveEstate();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
 

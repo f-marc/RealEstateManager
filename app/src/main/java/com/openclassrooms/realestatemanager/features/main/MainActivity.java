@@ -1,11 +1,13 @@
 package com.openclassrooms.realestatemanager.features.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.Toast;
 
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
 
     public static final int ADD_ESTATE_REQUEST = 1;
 
+    private Toolbar toolbar;
     private MainFragment mainFragment;
     private DetailFragment detailFragment;
     private EstateViewModel estateViewModel;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
                 new ViewModelProvider.AndroidViewModelFactory(this.getApplication()))
                 .get(EstateViewModel.class);
 
+        this.configureToolbar();
         this.configureMainFragment();
         this.configureDetailFragment();
     }
@@ -36,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
     // --------------
     // FRAGMENTS
     // --------------
+
+    private void configureToolbar() {
+        this.toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getString(R.string.app_name));
+    }
 
     private void configureMainFragment(){
         // Get FragmentManager and Try to find existing instance of fragment in FrameLayout container
@@ -67,6 +77,19 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (findViewById(R.id.frame_layout_detail) == null) {
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+            if (count == 0) {
+                super.onBackPressed();
+            } else {
+                getSupportFragmentManager().popBackStack();
+            }
+        }
+    }
+
     // --------------
     // CALLBACK
     // --------------
@@ -86,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
         else {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_layout_main, detailFragment)
+                    .addToBackStack("detail")
                     .commit();
         }
     }

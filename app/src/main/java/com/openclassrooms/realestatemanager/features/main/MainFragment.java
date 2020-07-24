@@ -6,9 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -17,24 +15,17 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
-import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
 import com.openclassrooms.realestatemanager.utils.ItemClickSupport;
-import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
-import static com.openclassrooms.realestatemanager.features.main.MainActivity.ADD_ESTATE_REQUEST;
 
 
 public class MainFragment extends Fragment {
@@ -70,65 +61,11 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_main_recycler_view);
-        FloatingActionButton buttonAddEstate = view.findViewById(R.id.button_add_estate);
-
-        // CLICK ON FAB
-        buttonAddEstate.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AddEstateActivity.class);
-            startActivityForResult(intent, ADD_ESTATE_REQUEST);
-        });
-
-        // SWIPE TO DELETE
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            Drawable icon = view.getContext().getResources().getDrawable(R.drawable.ic_delete);
-            ColorDrawable background = new ColorDrawable(getResources().getColor(R.color.delete));
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                estateViewModel.delete(adapter.getEstateAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(), "Note deleted", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-                View itemView = viewHolder.itemView;
-                int backgroundCornerOffset = 0;
-
-                int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-                int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-                int iconBottom = iconTop + icon.getIntrinsicHeight();
-
-                if (dX > 0) { // Swiping to the right
-                    int iconLeft = itemView.getLeft() + iconMargin + icon.getIntrinsicWidth();
-                    int iconRight = itemView.getLeft() + iconMargin;
-                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
-                    background.setBounds(itemView.getLeft(), itemView.getTop(),
-                            itemView.getLeft() + ((int) dX) + backgroundCornerOffset, itemView.getBottom());
-
-                } else if (dX < 0) { // Swiping to the left
-                    int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
-                    int iconRight = itemView.getRight() - iconMargin;
-                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
-                    background.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
-                            itemView.getTop(), itemView.getRight(), itemView.getBottom());
-
-                } else { // view is unSwiped
-                    background.setBounds(0, 0, 0, 0);
-                }
-
-                background.draw(c);
-                icon.draw(c);
-            }
-        }).attachToRecyclerView(recyclerView);
 
         configureRecyclerView();
         configureViewModel();
         configureOnClickRecyclerView();
+        configureSwipeToDelete(view);
 
         return view;
     }
@@ -163,29 +100,57 @@ public class MainFragment extends Fragment {
                 });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    private void configureSwipeToDelete(View view) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
-        if (requestCode == ADD_ESTATE_REQUEST && resultCode == RESULT_OK) {
-            String image = "";
-            String type = data.getStringExtra(AddEstateActivity.EXTRA_TYPE);
-            String price = data.getStringExtra(AddEstateActivity.EXTRA_PRICE);
-            String address = data.getStringExtra(AddEstateActivity.EXTRA_ADDRESS);
-            String surface = data.getStringExtra(AddEstateActivity.EXTRA_SURFACE);
-            String rooms = data.getStringExtra(AddEstateActivity.EXTRA_ROOMS); // A AJOUTER
-            String interest = data.getStringExtra(AddEstateActivity.EXTRA_INTEREST); // A AJOUTER
-            String agent = data.getStringExtra(AddEstateActivity.EXTRA_AGENT);
-            String description = data.getStringExtra(AddEstateActivity.EXTRA_DESCRIPTION); // A AJOUTER
-            String date = Utils.getTodayDate();
+            Drawable icon = view.getContext().getResources().getDrawable(R.drawable.ic_delete);
+            ColorDrawable background = new ColorDrawable(getResources().getColor(R.color.delete));
 
-            Estate estate = new Estate(image, type, price, address, surface, agent, date);
-            estateViewModel.insert(estate);
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-            Toast.makeText(getContext(), "Note saved", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(), "Note not saved", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                estateViewModel.delete(adapter.getEstateAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Note deleted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
+                View itemView = viewHolder.itemView;
+                int backgroundCornerOffset = 0;
+
+                int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+                int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+                int iconBottom = iconTop + icon.getIntrinsicHeight();
+
+                if (dX > 0) { // Swiping to the right
+                    int iconLeft = itemView.getLeft() + iconMargin + icon.getIntrinsicWidth();
+                    int iconRight = itemView.getLeft() + iconMargin;
+                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                    background.setBounds(itemView.getLeft(), itemView.getTop(),
+                            itemView.getLeft() + ((int) dX) + backgroundCornerOffset, itemView.getBottom());
+
+                } else if (dX < 0) { // Swiping to the left
+                    int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
+                    int iconRight = itemView.getRight() - iconMargin;
+                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                    background.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
+                            itemView.getTop(), itemView.getRight(), itemView.getBottom());
+
+                } else { // view is unSwiped
+                    background.setBounds(0, 0, 0, 0);
+                }
+
+                background.draw(c);
+                icon.draw(c);
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 
 }

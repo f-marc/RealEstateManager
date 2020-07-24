@@ -11,6 +11,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "GOOGLE_MAPS_KEY", GOOGLE_MAPS_KEY
+        resValue "string", "google_maps_key", GOOGLE_MAPS_KEY
     }
     buildTypes {
         release {
@@ -25,6 +27,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     def lifecycle_version = "2.2.0"
     def room_version = "2.2.5"
 
@@ -38,6 +41,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.1.0'
+
+    // GOOGLE MAP
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     // ROOM
     implementation "androidx.room:room-runtime:$room_version"

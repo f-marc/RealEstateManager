@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -49,8 +47,6 @@ public class AddEstateActivity extends AppCompatActivity {
         Button button = findViewById(R.id.activity_add_button);
         button.setOnClickListener(v -> saveEstate());
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        setTitle("Add Estate");
     }
 
     private void saveEstate() {

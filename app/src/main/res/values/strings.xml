@@ -27,4 +27,5 @@
     <string name="rooms_hint">8</string>
     <string name="interest_hint">School, Supermarket, …</string>
     <string name="description_hint">Garden with swimming pool …</string>
+    <string name="map">Map</string>
 </resources>

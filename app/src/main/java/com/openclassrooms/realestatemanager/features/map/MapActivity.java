@@ -14,8 +14,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.openclassrooms.realestatemanager.BuildConfig;
 import com.openclassrooms.realestatemanager.R;
 
 import java.util.Objects;
@@ -26,9 +24,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     private static final int LOC_REQ_CODE = 1;
 
-    private GoogleMap map;
     private FusedLocationProviderClient client;
-    private LatLng placeLoc;
+    private LatLng latLng;
     private double latitude = 0.0;
     private double longitude = 0.0;
 
@@ -46,7 +43,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
 
         /*LatLng test = new LatLng(0, 0);
         map.addMarker(new MarkerOptions().position(test).title("Marker"));*/
@@ -57,11 +53,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 if (location != null) {
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
-                    placeLoc = new LatLng(latitude, longitude);
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(placeLoc, 16.0f));
+                    latLng = new LatLng(latitude, longitude);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
                 }
             });
-            map.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(true);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, LOC_REQ_CODE);
         }

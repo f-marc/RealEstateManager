@@ -60,6 +60,9 @@ public class DetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         Fragment mapStaticFragment = new MapStaticFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("address", addressText.getText().toString());
+        mapStaticFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_detail_map, mapStaticFragment).commit();
     }

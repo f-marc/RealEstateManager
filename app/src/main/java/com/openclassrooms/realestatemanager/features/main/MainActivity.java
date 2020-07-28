@@ -1,7 +1,10 @@
 package com.openclassrooms.realestatemanager.features.main;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -9,7 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
     public static final int ADD_ESTATE_REQUEST = 1;
 
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
     private MainFragment mainFragment;
     private DetailFragment detailFragment;
     private EstateViewModel estateViewModel;
@@ -37,13 +44,15 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
                 .get(EstateViewModel.class);
 
         this.configureToolbar();
+        this.configureDrawerLayout();
+        this.configureNavigationView();
         this.configureMainFragment();
         this.configureDetailFragment();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -53,11 +62,41 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
         getSupportActionBar().setTitle(getString(R.string.app_name));
     }
 
+    private void configureDrawerLayout() {
+        this.drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    private void configureNavigationView() {
+        navigationView = findViewById(R.id.activity_main_nav_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            switch (id) {
+                case R.id.nav_map_view:
+                    Intent mapIntent = new Intent(this, MapActivity.class);
+                    startActivity(mapIntent);
+                    break;
+                case R.id.nav_conversions:
+                    Toast.makeText(this, getResources().getString(R.string.conversions), Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.nav_loan_calculator:
+                    Toast.makeText(this, getResources().getString(R.string.loan_calculator), Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
+    }
+
     // --------------
     // FRAGMENTS
     // --------------
 
-    private void configureMainFragment(){
+    private void configureMainFragment() {
         // Get FragmentManager and Try to find existing instance of fragment in FrameLayout container
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_main);
 
@@ -71,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
         }
     }
 
-    private void configureDetailFragment(){
+    private void configureDetailFragment() {
         detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
 
         // We only add DetailFragment in Tablet mode (If found frame_layout_detail)
@@ -137,7 +176,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
     // --------------
     @Override
     public void onItemClicked(long id) {
-        Log.i("testclick", "" + id);
         detailFragment = new DetailFragment();
         Bundle bundle = new Bundle();
         bundle.putLong("id", id);
@@ -147,8 +185,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_layout_detail, detailFragment)
                     .commit();
-        }
-        else {
+        } else {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_layout_main, detailFragment)
                     .addToBackStack("detail")

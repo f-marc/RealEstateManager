@@ -27,5 +27,9 @@
     <string name="rooms_hint">8</string>
     <string name="interest_hint">School, Supermarket, …</string>
     <string name="description_hint">Garden with swimming pool …</string>
-    <string name="map">Map</string>
+    <string name="map_view">Map View</string>
+    <string name="loan_calculator">Loan Calculator</string>
+    <string name="conversions">Conversions</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

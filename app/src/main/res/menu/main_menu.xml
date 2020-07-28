@@ -6,7 +6,7 @@
         android:id="@+id/toolbar_map"
         android:icon="@drawable/ic_baseline_map"
         app:showAsAction="ifRoom"
-        android:title="@string/map">
+        android:title="@string/map_view">
     </item>
 
     <item

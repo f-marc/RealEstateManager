@@ -32,4 +32,8 @@
     <string name="conversions">Conversions</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="popup_title_permission_files_access">Please allow files access to select an image.</string>
+    <string name="toast_title_no_image_chosen">No image chosen</string>
+    <string name="select_picture">Select a picture</string>
+
 </resources>

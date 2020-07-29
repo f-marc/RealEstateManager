@@ -65,4 +65,8 @@ dependencies {
 
     // TESTING
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
+
+    // EASY PERMISSIONS
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
 }

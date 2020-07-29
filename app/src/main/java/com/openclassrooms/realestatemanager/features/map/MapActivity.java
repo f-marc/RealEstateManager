@@ -44,9 +44,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        /*LatLng test = new LatLng(0, 0);
-        map.addMarker(new MarkerOptions().position(test).title("Marker"));*/
-
         // SET THE CAMERA TO USER'S POSITION
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             client.getLastLocation().addOnSuccessListener(this, location -> {

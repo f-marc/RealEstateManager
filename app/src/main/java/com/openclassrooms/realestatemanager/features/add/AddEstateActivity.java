@@ -7,14 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.realestatemanager.R;
 
 import butterknife.BindView;
@@ -111,7 +109,7 @@ public class AddEstateActivity extends AppCompatActivity {
         String rooms = editTextRooms.getText().toString();
 
         if (type.trim().isEmpty() || price.trim().isEmpty() || address.trim().isEmpty()
-                || surface.trim().isEmpty() || agent.trim().isEmpty()) {
+                || surface.trim().isEmpty() || agent.trim().isEmpty() || uriImageSelected == null) {
             Toast.makeText(this, getResources().getString(R.string.complete_fields), Toast.LENGTH_SHORT).show();
             return;
         }

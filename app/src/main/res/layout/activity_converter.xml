@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="10">
 
@@ -18,63 +18,92 @@
             android:id="@+id/activity_converter_first_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/currency_eur"
             app:layout_constraintBottom_toTopOf="@id/activity_converter_second_image"
-            android:src="@drawable/currency_eur" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/activity_converter_first_spinner"
+            android:id="@+id/activity_converter_first_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/activity_converter_first_image"
-            app:layout_constraintTop_toTopOf="@id/activity_converter_first_image"
-            app:layout_constraintBottom_toBottomOf="@id/activity_converter_first_image"
             android:padding="12dp"
             android:text="@string/eur"
+            android:textColor="@android:color/black"
             android:textSize="36sp"
-            android:textColor="@android:color/black" />
+            app:layout_constraintBottom_toBottomOf="@id/activity_converter_first_image"
+            app:layout_constraintStart_toEndOf="@id/activity_converter_first_image"
+            app:layout_constraintTop_toTopOf="@id/activity_converter_first_image" />
 
-        <EditText
-            android:id="@+id/activity_converter_first_edittext"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/activity_converter_first_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/activity_converter_first_spinner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/activity_converter_first_image"
             app:layout_constraintBottom_toBottomOf="@id/activity_converter_first_image"
-            android:textSize="24sp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/activity_converter_first_textview"
+            app:layout_constraintTop_toTopOf="@id/activity_converter_first_image"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/activity_converter_first_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:maxLength="9" />
+        </androidx.cardview.widget.CardView>
 
         <!-- SECOND CURRENCY -->
         <ImageView
             android:id="@+id/activity_converter_second_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_converter_first_image"
+            android:src="@drawable/currency_usd"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/currency_usd" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_converter_first_image" />
 
         <TextView
-            android:id="@+id/activity_converter_second_spinner"
+            android:id="@+id/activity_converter_second_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/activity_converter_second_image"
-            app:layout_constraintTop_toTopOf="@id/activity_converter_second_image"
-            app:layout_constraintBottom_toBottomOf="@id/activity_converter_second_image"
             android:padding="12dp"
             android:text="@string/usd"
+            android:textColor="@android:color/black"
             android:textSize="36sp"
-            android:textColor="@android:color/black" />
+            app:layout_constraintBottom_toBottomOf="@id/activity_converter_second_image"
+            app:layout_constraintStart_toEndOf="@id/activity_converter_second_image"
+            app:layout_constraintTop_toTopOf="@id/activity_converter_second_image" />
 
-        <EditText
+        <androidx.cardview.widget.CardView
+            android:id="@+id/activity_converter_second_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/activity_converter_second_spinner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/activity_converter_second_image"
             app:layout_constraintBottom_toBottomOf="@id/activity_converter_second_image"
-            android:textSize="24sp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/activity_converter_second_textview"
+            app:layout_constraintTop_toTopOf="@id/activity_converter_second_image"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/activity_converter_second_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:maxLength="9" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,27 +118,28 @@
             android:id="@+id/activity_converter_left_line"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/activity_converter_invert_image"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorAccent" />
+            app:layout_constraintEnd_toStartOf="@id/activity_converter_invert_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/activity_converter_invert_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="100dp"
-            app:cardBackgroundColor="@color/colorAccent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_baseline_swap_vert"/>
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_baseline_swap_vert" />
 
         </androidx.cardview.widget.CardView>
 
@@ -117,11 +147,11 @@
             android:id="@+id/activity_converter_right_line"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            app:layout_constraintStart_toEndOf="@id/activity_converter_invert_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorAccent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/activity_converter_invert_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,10 +166,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/activity_converter_7_btn"
@@ -147,10 +177,10 @@
                 android:layout_height="0dp"
                 android:text="7"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_4_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_8_btn"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/activity_converter_8_btn"
@@ -158,10 +188,10 @@
                 android:layout_height="0dp"
                 android:text="8"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_5_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_9_btn"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_7_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_7_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/activity_converter_9_btn"
@@ -169,10 +199,10 @@
                 android:layout_height="0dp"
                 android:text="9"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_6_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_8_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_8_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/activity_converter_4_btn"
@@ -180,10 +210,10 @@
                 android:layout_height="0dp"
                 android:text="4"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_7_btn"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_1_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_5_btn"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_7_btn" />
 
             <Button
                 android:id="@+id/activity_converter_5_btn"
@@ -191,10 +221,10 @@
                 android:layout_height="0dp"
                 android:text="5"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_8_btn"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_2_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_6_btn"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_4_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_4_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_8_btn" />
 
             <Button
                 android:id="@+id/activity_converter_6_btn"
@@ -202,10 +232,10 @@
                 android:layout_height="0dp"
                 android:text="6"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_9_btn"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_3_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_5_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_5_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_9_btn" />
 
             <Button
                 android:id="@+id/activity_converter_1_btn"
@@ -213,10 +243,10 @@
                 android:layout_height="0dp"
                 android:text="1"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_4_btn"
-                app:layout_constraintBottom_toTopOf="@id/activity_converter_point_btn"
+                app:layout_constraintBottom_toTopOf="@id/activity_converter_clean_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_2_btn"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_4_btn" />
 
             <Button
                 android:id="@+id/activity_converter_2_btn"
@@ -224,10 +254,10 @@
                 android:layout_height="0dp"
                 android:text="2"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_5_btn"
                 app:layout_constraintBottom_toTopOf="@id/activity_converter_0_btn"
                 app:layout_constraintEnd_toStartOf="@id/activity_converter_3_btn"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_1_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_1_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_5_btn" />
 
             <Button
                 android:id="@+id/activity_converter_3_btn"
@@ -235,21 +265,22 @@
                 android:layout_height="0dp"
                 android:text="3"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_6_btn"
-                app:layout_constraintBottom_toTopOf="@id/activity_converter_clean_btn"
+                app:layout_constraintBottom_toTopOf="@id/activity_converter_back_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_2_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_2_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_6_btn" />
 
-            <Button
-                android:id="@+id/activity_converter_point_btn"
+            <ImageButton
+                android:id="@+id/activity_converter_back_btn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:text="."
-                android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_1_btn"
+                android:padding="18dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_backspace"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/activity_converter_0_btn"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/activity_converter_0_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_3_btn" />
 
             <Button
                 android:id="@+id/activity_converter_0_btn"
@@ -257,10 +288,10 @@
                 android:layout_height="0dp"
                 android:text="0"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_2_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/activity_converter_clean_btn"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_point_btn" />
+                app:layout_constraintStart_toEndOf="@id/activity_converter_clean_btn"
+                app:layout_constraintEnd_toStartOf="@id/activity_converter_back_btn"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_2_btn" />
 
             <Button
                 android:id="@+id/activity_converter_clean_btn"
@@ -270,10 +301,10 @@
                 android:text="C"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/button_converter_text_size"
-                app:layout_constraintTop_toBottomOf="@id/activity_converter_3_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/activity_converter_0_btn" />
+                app:layout_constraintEnd_toStartOf="@id/activity_converter_0_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_converter_1_btn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

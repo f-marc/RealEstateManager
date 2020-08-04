@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import com.openclassrooms.realestatemanager.features.add.AddEstateActivity;
+import com.openclassrooms.realestatemanager.features.converter.ConverterActivity;
 import com.openclassrooms.realestatemanager.features.detail.DetailFragment;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.features.map.MapActivity;
@@ -78,7 +79,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
                     startActivity(mapIntent);
                     break;
                 case R.id.nav_conversions:
-                    Toast.makeText(this, getResources().getString(R.string.conversions), Toast.LENGTH_SHORT).show();
+                    Intent converterIntent = new Intent(this, ConverterActivity.class);
+                    startActivity(converterIntent);
                     break;
                 case R.id.nav_loan_calculator:
                     Toast.makeText(this, getResources().getString(R.string.loan_calculator), Toast.LENGTH_SHORT).show();

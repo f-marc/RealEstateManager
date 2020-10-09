@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.openclassrooms.realestatemanager.data.model.Estate;
@@ -21,6 +20,7 @@ import com.openclassrooms.realestatemanager.features.converter.ConverterActivity
 import com.openclassrooms.realestatemanager.features.detail.DetailFragment;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.features.map.MapActivity;
+import com.openclassrooms.realestatemanager.features.calculator.CalculatorActivity;
 import com.openclassrooms.realestatemanager.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.CallbackClick {
@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
                     startActivity(converterIntent);
                     break;
                 case R.id.nav_loan_calculator:
-                    Toast.makeText(this, getResources().getString(R.string.loan_calculator), Toast.LENGTH_SHORT).show();
+                    Intent calculatorIntent = new Intent(this, CalculatorActivity.class);
+                    startActivity(calculatorIntent);
                     break;
                 default:
                     break;

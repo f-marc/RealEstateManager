@@ -6,6 +6,7 @@
 
     <color name="backgroundLayout">#FFFFFF</color>
     <color name="backgroundDivider">#EBEAEA</color>
+    <color name="lightAccent">#BAA9F5</color>
 
     <color name="textPrimary">#FFFFFF</color>
     <color name="delete">#EB5252</color>

@@ -37,5 +37,14 @@
     <string name="select_picture">Select a picture</string>
     <string name="eur">EUR</string>
     <string name="usd">USD</string>
+    <string name="monthly_payment">Your monthly payment will be</string>
+    <string name="per_month">$/month</string>
+    <string name="credit_cost">Credit cost :</string>
+    <string name="dollar">$</string>
+    <string name="years">years</string>
+    <string name="percent">%</string>
+    <string name="interest_rate">Interest rate</string>
+    <string name="loan_duration">Loan duration</string>
+    <string name="loan_amount">Loan amount</string>
 
 </resources>

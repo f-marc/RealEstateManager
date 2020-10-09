@@ -19,13 +19,15 @@ import android.widget.TextView;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.utils.Utils;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ConverterActivity extends AppCompatActivity {
 
-    @BindView(R.id.activity_converter_first_edittext) EditText editTextFirst;
-    @BindView(R.id.activity_converter_second_edittext) EditText editTextSecond;
+    @BindView(R.id.activity_converter_first_edittext) TextView editTextFirst;
+    @BindView(R.id.activity_converter_second_edittext) TextView editTextSecond;
     @BindView(R.id.activity_converter_first_textview) TextView textViewFirst;
     @BindView(R.id.activity_converter_second_textview) TextView textViewSecond;
     @BindView(R.id.activity_converter_first_image) ImageView imageViewFirst;
@@ -45,6 +47,7 @@ public class ConverterActivity extends AppCompatActivity {
     @BindView(R.id.activity_converter_9_btn) Button button9;
     private SharedPreferences sharedPreferences;
     private Boolean euroToDollar;
+    private DecimalFormat df;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class ConverterActivity extends AppCompatActivity {
 
         sharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
         euroToDollar = sharedPreferences.getBoolean("euroToDollar", true);
+
+        df = new DecimalFormat("#,###");
 
         if (euroToDollar) {
             setEuroToDollar();
@@ -77,14 +82,9 @@ public class ConverterActivity extends AppCompatActivity {
 
         editTextFirst.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // NOTHING
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // NOTHING
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -105,9 +105,9 @@ public class ConverterActivity extends AppCompatActivity {
     private void updateSecond(String s) {
         int firstText = Integer.parseInt(s);
         if (euroToDollar) {
-            editTextSecond.setText(String.valueOf(Utils.convertEuroToDollar(firstText)));
+            editTextSecond.setText(String.valueOf(df.format(Utils.convertEuroToDollar(firstText))));
         } else {
-            editTextSecond.setText(String.valueOf(Utils.convertDollarToEuro(firstText)));
+            editTextSecond.setText(String.valueOf(df.format(Utils.convertDollarToEuro(firstText))));
         }
     }
 

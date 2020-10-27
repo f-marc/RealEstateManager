@@ -16,4 +16,11 @@
         android:title="@string/add">
     </item>
 
+    <item
+        android:id="@+id/toolbar_edit"
+        android:icon="@drawable/ic_baseline_edit"
+        app:showAsAction="ifRoom"
+        android:title="@string/add">
+    </item>
+
 </menu>

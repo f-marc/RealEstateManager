@@ -12,7 +12,7 @@
 
         <!-- MEDIA -->
         <TextView
-            android:id="@+id/fragment_detail_media_title"
+            android:id="@+id/fragment_edit_media_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +23,11 @@
             android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_detail_recyclerview"
+            android:id="@+id/fragment_edit_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_media_title"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_edit_media_title"
             android:layout_marginTop="6dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -36,23 +36,23 @@
 
         <!-- DESCRIPTION -->
         <TextView
-            android:id="@+id/fragment_detail_description_title"
+            android:id="@+id/fragment_edit_description_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_recyclerview"
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_recyclerview"
             android:layout_marginTop="24dp"
             android:text="Description"
             android:textColor="@color/colorDark"
             android:textSize="30sp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/fragment_detail_description_text"
+        <EditText
+            android:id="@+id/fragment_edit_description_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_description_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_description_title"
             android:layout_marginTop="6dp"
             android:text="@string/lorem_ipsum"
             android:textColor="@color/colorDark"
@@ -60,16 +60,16 @@
 
         <!-- SURFACE -->
         <ImageView
-            android:id="@+id/fragment_detail_surface_image"
+            android:id="@+id/fragment_edit_surface_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_description_text"
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_description_edit"
             android:src="@drawable/overscan" />
 
         <TextView
-            android:id="@+id/fragment_detail_surface_title"
+            android:id="@+id/fragment_edit_surface_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -77,32 +77,32 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/colorDark"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_detail_surface_image"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_surface_image"
-            app:layout_constraintTop_toTopOf="@id/fragment_detail_surface_image" />
+            app:layout_constraintBottom_toBottomOf="@id/fragment_edit_surface_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_surface_image"
+            app:layout_constraintTop_toTopOf="@id/fragment_edit_surface_image" />
 
-        <TextView
-            android:id="@+id/fragment_detail_surface_text"
+        <EditText
+            android:id="@+id/fragment_edit_surface_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_surface_image"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_surface_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_surface_image"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_edit_surface_image"
             android:text="250 m²"
             android:textSize="16sp"/>
 
         <!-- ROOMS -->
         <ImageView
-            android:id="@+id/fragment_detail_rooms_image"
+            android:id="@+id/fragment_edit_rooms_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_surface_text"
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_surface_edit"
             android:src="@drawable/home" />
 
         <TextView
-            android:id="@+id/fragment_detail_rooms_title"
+            android:id="@+id/fragment_edit_rooms_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -110,32 +110,32 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/colorDark"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_detail_rooms_image"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_rooms_image"
-            app:layout_constraintTop_toTopOf="@id/fragment_detail_rooms_image" />
+            app:layout_constraintBottom_toBottomOf="@id/fragment_edit_rooms_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_rooms_image"
+            app:layout_constraintTop_toTopOf="@id/fragment_edit_rooms_image" />
 
-        <TextView
-            android:id="@+id/fragment_detail_rooms_text"
+        <EditText
+            android:id="@+id/fragment_edit_rooms_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_rooms_image"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_rooms_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_rooms_image"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_edit_rooms_image"
             android:text="8"
             android:textSize="16sp"/>
 
         <!-- ADDRESS -->
         <ImageView
-            android:id="@+id/fragment_detail_address_image"
+            android:id="@+id/fragment_edit_address_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_rooms_text"
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_rooms_edit"
             android:src="@drawable/map_marker" />
 
         <TextView
-            android:id="@+id/fragment_detail_address_title"
+            android:id="@+id/fragment_edit_address_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -143,30 +143,30 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/colorDark"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_detail_address_image"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_address_image"
-            app:layout_constraintTop_toTopOf="@id/fragment_detail_address_image" />
+            app:layout_constraintBottom_toBottomOf="@id/fragment_edit_address_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_address_image"
+            app:layout_constraintTop_toTopOf="@id/fragment_edit_address_image" />
 
-        <TextView
-            android:id="@+id/fragment_detail_address_text"
+        <EditText
+            android:id="@+id/fragment_edit_address_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintStart_toEndOf="@id/fragment_detail_address_image"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_address_image"
+            app:layout_constraintStart_toEndOf="@id/fragment_edit_address_image"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_edit_address_image"
             android:text="8 Allée du blabla ..."
             android:textSize="16sp"/>
-        
+
         <!-- MAP -->
         <FrameLayout
-            android:id="@+id/fragment_detail_map"
+            android:id="@+id/fragment_edit_map"
             android:background="@color/colorAccent"
             android:layout_width="270dp"
             android:layout_height="270dp"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_detail_address_text" />
+            app:layout_constraintTop_toBottomOf="@id/fragment_edit_address_edit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 package com.openclassrooms.realestatemanager.features.detail;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,16 +21,22 @@ import com.openclassrooms.realestatemanager.data.model.EstateViewModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
+
 public class DetailFragment extends Fragment {
 
     public static DetailFragment newInstance() {
         return new DetailFragment();
     }
 
-    @BindView(R.id.fragment_detail_description_text) TextView descriptionText;
-    @BindView(R.id.fragment_detail_surface_text) TextView surfaceText;
-    @BindView(R.id.fragment_detail_rooms_text) TextView roomsText;
-    @BindView(R.id.fragment_detail_address_text) TextView addressText;
+    @BindView(R.id.fragment_detail_description_text)
+    TextView descriptionText;
+    @BindView(R.id.fragment_detail_surface_text)
+    TextView surfaceText;
+    @BindView(R.id.fragment_detail_rooms_text)
+    TextView roomsText;
+    @BindView(R.id.fragment_detail_address_text)
+    TextView addressText;
 
     private EstateViewModel estateViewModel;
 
@@ -38,19 +45,30 @@ public class DetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, view);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            descriptionText.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+
         long id = 0;
         if (getArguments() != null) {
             id = getArguments().getLong("id");
         }
-        Log.i("testid", "" + id);
 
         estateViewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(this.getActivity().getApplication()))
                 .get(EstateViewModel.class);
         estateViewModel.getEstate(id).observe(this, estate -> {
-            descriptionText.setText(estate.getRooms());
+            if (estate.getDescription() == null || estate.getDescription().isEmpty()) {
+                descriptionText.setText(R.string.lorem_ipsum);
+            } else {
+                descriptionText.setText(estate.getDescription());
+            }
+            if (estate.getRooms() == null || estate.getRooms().isEmpty()) {
+                roomsText.setText("Unknown");
+            } else {
+                roomsText.setText(estate.getRooms());
+            }
             surfaceText.setText(estate.getSurface());
-            roomsText.setText(estate.getRooms());
             addressText.setText(estate.getAddress());
         });
 

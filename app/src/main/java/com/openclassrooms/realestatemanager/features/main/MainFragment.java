@@ -81,11 +81,8 @@ public class MainFragment extends Fragment {
         estateViewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(this.getActivity().getApplication()))
                 .get(EstateViewModel.class);
-        estateViewModel.getAllEstates().observe(this, new Observer<List<Estate>>() {
-            @Override
-            public void onChanged(@Nullable List<Estate> estates) {
-                adapter.setEstates(estates);
-            }
+        estateViewModel.getAllEstates().observe(this, estates -> {
+            adapter.setEstates(estates);
         });
     }
 

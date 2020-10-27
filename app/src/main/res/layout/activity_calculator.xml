@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calculator_linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".features.calculator.CalculatorActivity">
@@ -150,22 +152,22 @@
             app:layout_constraintStart_toEndOf="@id/calculator_editText_amount"
             app:layout_constraintTop_toTopOf="@id/calculator_editText_amount" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <com.google.android.material.slider.Slider
             android:id="@+id/calculator_seek_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progressDrawable="@drawable/seekbar_style"
-            android:splitTrack="false"
-            android:thumb="@drawable/custom_thumb"
             app:layout_constraintBottom_toTopOf="@id/calculator_line1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calculator_editText_amount" />
+            app:layout_constraintTop_toBottomOf="@id/calculator_editText_amount"
+            app:thumbRadius="12dp"
+            app:tickColor="@android:color/transparent"
+            app:trackHeight="15dp" />
 
         <ImageView
             android:id="@+id/calculator_line1"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="10dp"
             android:background="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@id/calculator_textView_duration_title"
             app:layout_constraintTop_toBottomOf="@id/calculator_seek_amount" />
@@ -206,23 +208,23 @@
             app:layout_constraintStart_toEndOf="@id/calculator_editText_duration"
             app:layout_constraintTop_toTopOf="@id/calculator_editText_duration" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <com.google.android.material.slider.Slider
             android:id="@+id/calculator_seek_duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progressDrawable="@drawable/seekbar_style"
-            android:splitTrack="false"
-            android:thumb="@drawable/custom_thumb"
             app:layout_constraintBottom_toTopOf="@id/calculator_line2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calculator_editText_duration" />
+            app:layout_constraintTop_toBottomOf="@id/calculator_editText_duration"
+            app:thumbRadius="12dp"
+            app:tickColor="@android:color/transparent"
+            app:trackHeight="15dp" />
 
         <ImageView
             android:id="@+id/calculator_line2"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="10dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/calculator_editText_rate"
+            app:layout_constraintBottom_toTopOf="@id/calculator_textView_rate_title"
             app:layout_constraintTop_toBottomOf="@id/calculator_seek_duration" />
 
         <TextView
@@ -233,9 +235,9 @@
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/calculator_editText_rate"
+            app:layout_constraintBottom_toTopOf="@id/calculator_editText_rate"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/calculator_editText_rate" />
+            app:layout_constraintTop_toBottomOf="@id/calculator_line2" />
 
         <EditText
             android:id="@+id/calculator_editText_rate"
@@ -245,9 +247,9 @@
             android:paddingEnd="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/calculator_textView_rate_title" />
+            app:layout_constraintBottom_toTopOf="@id/calculator_seek_rate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculator_textView_rate_title" />
 
         <TextView
             android:id="@+id/calculator_textView_rate"
@@ -259,6 +261,16 @@
             app:layout_constraintBottom_toBottomOf="@id/calculator_editText_rate"
             app:layout_constraintStart_toEndOf="@id/calculator_editText_rate"
             app:layout_constraintTop_toTopOf="@id/calculator_editText_rate" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/calculator_seek_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:thumbRadius="12dp"
+            app:tickColor="@android:color/transparent"
+            app:trackHeight="15dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

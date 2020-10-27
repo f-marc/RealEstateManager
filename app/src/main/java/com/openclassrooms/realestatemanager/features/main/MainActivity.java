@@ -56,6 +56,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
         return true;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
+        if (detailFragment == null && findViewById(R.id.frame_layout_detail) == null) { // If smartphone and detail isn't displayed
+            menu.findItem(R.id.toolbar_add).setVisible(true);
+            menu.findItem(R.id.toolbar_edit).setVisible(false);
+        } else if (detailFragment != null && findViewById(R.id.frame_layout_detail) == null) { // If smartphone and detail is displayed
+            menu.findItem(R.id.toolbar_add).setVisible(false);
+            menu.findItem(R.id.toolbar_edit).setVisible(true);
+        }
+        return true;
+    }
+
     private void configureToolbar() {
         this.toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -193,5 +207,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Call
                     .addToBackStack("detail")
                     .commit();
         }
+
+        invalidateOptionsMenu();
     }
 }

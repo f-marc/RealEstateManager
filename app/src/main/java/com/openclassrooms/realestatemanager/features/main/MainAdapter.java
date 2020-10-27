@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.Estate;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +29,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EstateHolder> 
     @Override
     public void onBindViewHolder(@NonNull EstateHolder holder, int position) {
         Estate currentEstate = estates.get(position);
+        DecimalFormat df = new DecimalFormat("#,###");
+        int price = Integer.parseInt(currentEstate.getPrice());
         holder.textViewType.setText(currentEstate.getType());
         holder.textViewAddress.setText(currentEstate.getAddress());
-        holder.textViewPrice.setText(String.valueOf(currentEstate.getPrice()));
+        holder.textViewPrice.setText("$" + df.format(price)); // FICHIER LANGUES
     }
 
     @Override
